@@ -1,0 +1,2 @@
+class Caddy < ApplicationRecord
+end

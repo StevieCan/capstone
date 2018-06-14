@@ -1,0 +1,1 @@
+json.partial! @caddy, partial: "caddy", as: :caddy

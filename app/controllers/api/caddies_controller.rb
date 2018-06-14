@@ -28,7 +28,7 @@ class Api::CaddiesController < ApplicationController
     caddy_id = params[:id]
     @caddy = Caddy.find(caddy_id)
     @caddy.name = params[:name] || @caddy.name
-    @caddy.email = params[.email] || @caddy.email
+    @caddy.email = params[:email] || @caddy.email
     @caddy.phone_number = params[:phone_number] || @caddy.phone_number
     @caddy.username = params[:username] || @caddy.username
     @caddy.password_digest = params[:password_digest] || @caddy.password_digest

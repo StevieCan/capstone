@@ -1,0 +1,1 @@
+json.array! @golfers, partial: "golfer", as: :golfer

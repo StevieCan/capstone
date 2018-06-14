@@ -1,0 +1,1 @@
+json.partial! @golfer, partial: "golfer", as: :golfer

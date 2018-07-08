@@ -8,6 +8,7 @@ class Api::CaddiesController < ApplicationController
   def show
     caddy_id = params[:id]
     @caddy = Caddy.find(caddy_id)
+    caddy_tee_time = TeeTime.find_by(caddy_id)
     render 'show.json.jbuilder'
   end
 
@@ -21,7 +22,11 @@ class Api::CaddiesController < ApplicationController
                       ranking: params[:ranking],
                       admin: params[:admin]
       )    
-    render 'show.json.jbuilder'
+    if @caddy.save
+      render "show.json.jbuilder"
+    else
+      render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity
+    end
   end
 
   def update

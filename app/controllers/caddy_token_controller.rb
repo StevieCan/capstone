@@ -1,11 +1,11 @@
-class UserTokenController < Knock::AuthTokenController
+class CaddyTokenController < Knock::AuthTokenController
   protect_from_forgery with: :null_session
   def create
     email = request.params["auth"] && request.params["auth"]["email"]
-    user = User.find_by(email: email)
+    caddy = Caddy.find_by(email: email)
     body = {
       jwt: auth_token.token,
-      user: { id: user.id, name: user.name, email: user.email }
+      caddy: { id: caddy.id, name: caddy.name, email: caddy.email }
     }
     render json: body, status: :created
   end

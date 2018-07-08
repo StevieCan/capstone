@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180618202809) do
+ActiveRecord::Schema.define(version: 20180701134919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,13 +30,13 @@ ActiveRecord::Schema.define(version: 20180618202809) do
   create_table "golfers", force: :cascade do |t|
     t.string "name"
     t.integer "member_number"
-    t.string "caddy_preference_one"
-    t.string "caddy_preference_2"
-    t.string "caddy_preference_3"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "caddy_preference_1"
+    t.integer "caddy_preference_2"
+    t.integer "caddy_preference_3"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -56,14 +56,6 @@ ActiveRecord::Schema.define(version: 20180618202809) do
     t.boolean "cart"
     t.integer "number_of_holes"
     t.string "start_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

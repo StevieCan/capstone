@@ -19,9 +19,14 @@ class Api::GolfersController < ApplicationController
                         caddy_preference_2: params[:caddy_preference_2],
                         caddy_preference_3: params[:caddy_preference_3],
                         email: params[:email],
-                        password_digest: params[:password_digest]
+                        password: params[:password],
+                        password_confirmation: params[:password_confirmation]
                         )
-    render 'show.json.jbuilder'
+    if @golfer.save
+      render "show.json.jbuilder"
+    else
+      render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity
+    end
   end
 
   def update

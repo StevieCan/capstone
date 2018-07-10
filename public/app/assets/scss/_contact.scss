@@ -1,0 +1,169 @@
+/*
+15 - Contact Section Style
+*/
+.contact-section{
+    background-color: #fff;
+}
+
+/**partners**/
+.partners{
+    padding: 20px 0;
+    background: $default-color;
+    text-align:center;
+
+    img{
+        display: inline-block;
+        margin: 0px auto;
+        height: 90px;
+        opacity: 0.75;
+        @include transition(all 0.3s);
+    }
+    a:hover img{
+        opacity:1;
+    }
+}
+.smart-wrap{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.smart-forms{
+    margin: 0px;
+    .form-body,.form-footer{
+        padding: 0px;
+    }
+    .form-footer{
+        background: none;
+        background-image: none;
+        overflow: visible;
+        .btn{
+            margin-right: .5rem;
+        }
+    }
+    .append-icon .field-icon i,.prepend-icon .field-icon i{
+        font-size: 20px;
+        display: block;
+        line-height: 42px;
+        position: relative;
+    }
+    .input-hint{
+background-color: #fff;
+    }
+}
+.smart-container{
+    box-shadow: none;
+}
+.smart-forms .select, .smart-forms .gui-input, .smart-forms .gui-textarea, .smart-forms .select > select, .smart-forms .select-multiple select{
+    border-color: $default-color;
+}
+.smart-forms .gui-input:focus ~ .field-icon i, .smart-forms .gui-textarea:focus ~ .field-icon i {
+    color:$skin-color;
+}
+.smart-forms .gui-input:hover, .smart-forms .gui-textarea:hover, .smart-forms .select > select:hover, .smart-forms .select-multiple select:hover, .smart-forms .gui-input:hover ~ .input-hint, .smart-forms .file .gui-file:hover + .gui-input, .smart-forms .gui-textarea:hover ~ .input-hint,.smart-forms .select-multiple select:focus, .smart-forms .gui-input:focus ~ .input-hint, .smart-forms .gui-textarea:focus ~ .input-hint, .smart-forms .file .gui-file:focus + .gui-input{
+    border-color:$skin-color;
+}
+.smart-forms .gui-input:focus, .smart-forms .gui-textarea:focus, .smart-forms .select > select:focus, .smart-forms .select-multiple select:focus{
+    box-shadow: 0px 0px 3px $skin-color inset;
+    border-color:$skin-color;
+}
+.smart-forms .prepend-icon > input, .smart-forms .prepend-icon > textarea, .smart-forms .prepend-icon > select {
+    padding-left: 40px;
+}
+.smart-forms .append-picker-icon button, .smart-forms .prepend-picker-icon button, .smart-forms .smart-widget .button{
+    border-color:$default-color;
+    background-color: transparent;
+}
+.smart-forms .select, .smart-forms .gui-input, .smart-forms .gui-textarea, .smart-forms .select > select, .smart-forms .select-multiple select{
+    font-family: $default-font;
+    font-weight: 500;
+    font-size:15px;
+}
+.smart-forms .refresh-captcha{
+    width: 36px;
+    height: 36px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $skin-color;
+    border:0px;
+    top: 2px;
+    right: -18px;
+    >i{
+        display: block;
+        line-height: 0;
+        position: relative;
+        left: 1px;
+        top: 1px;
+    }
+}
+.smart-forms .button{
+    height: auto;
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+}
+.smart-forms .sml-120 .button{
+    width: 140px;
+    display: inline-flex;
+    line-height: 1;
+    align-items: center;
+    border:1px solid $default-color;
+}
+.smart-forms .sml-120 {
+    padding-left: 140px;
+}
+.smart-forms .input-hint{
+    border:0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    margin-top: 1px;
+}
+.contact-wrapper{
+   .title-name{
+       font-size: 1rem;
+       font-weight: 500;
+       margin-bottom: 1rem;
+       color:#333;
+   }
+   p{
+       margin-bottom: 0px;
+   }
+.social-link{
+    display:inline-block;
+    >i{
+        font-size: 1.25rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 100px;
+        color:#fff;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $skin-color;
+        @include transition (all .3s);
+        margin-right: 5px;
+    }
+}
+}
+.social-link:hover>i{
+    box-shadow: 0px 0px 10px rgba(#333,.15);
+}
+@media(min-width:768px){
+    .contact-wrapper .col-sm-6{
+        padding: 1.5rem;
+        &:nth-child(1){
+            border-bottom: 1px solid $default-color;
+            border-right: 1px solid $default-color;
+        }
+        &:nth-child(3){
+            border-right: 1px solid $default-color;
+        }
+        &:nth-child(2){
+            border-bottom: 1px solid $default-color;
+        }
+    }
+}
+.newsletter-form{
+    .form-control{
+        padding-left: 0px;
+    }
+}

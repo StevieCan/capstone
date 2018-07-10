@@ -1,0 +1,67 @@
+/*
+06 - Top bar style
+*/
+.hero-social-bar{
+    width: 100%;
+    left: 0;
+    top: auto;
+    bottom:140px;
+    z-index: 999;
+    position: absolute;
+    ul{
+        margin: 0px;
+        padding: 0px;
+        li.list-inline-item{
+            padding: 0px;
+            margin-right:0px;
+            vertical-align:middle;
+            &:first-child{
+                span{
+                    display: inline-block;
+                    color: rgba(#fff,.75);
+                    position: relative;
+                    padding-right: 80px;
+                    &::after{
+                        content: "";
+                        width: 50px;
+                        height: 2px;
+                        background-color:rgba(#fff,.75);
+                        position: absolute;
+                        right: 10px;
+                        top:50%;
+                        transform: translateY(-50%);
+                        -webkit-transform: (-50%);
+                    }
+                }
+            }
+            a{
+                display: block;
+                height: 40px;
+                line-height: 40px;
+                padding: 0px 5px;
+                color: rgba(#fff,.75);
+                text-align: center;
+                >i{
+                    display: block;
+                    line-height: 40px;
+                }
+                &:hover{
+                    color: #fff;
+                }
+            }
+        }
+        &.top-socials{
+            li{
+                a{
+                    font-size: 16px;
+                    width:auto;
+                    padding: 0px 3px;
+                    text-align: center;
+                    
+                }
+            }
+        }
+    }
+}
+
+

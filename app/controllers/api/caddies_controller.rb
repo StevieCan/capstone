@@ -1,14 +1,14 @@
 class Api::CaddiesController < ApplicationController
 
   def index
-    @caddy = Caddy.all
+    @caddies = Caddy.all
     render 'index.json.jbuilder'
   end
 
   def show
     caddy_id = params[:id]
     @caddy = Caddy.find(caddy_id)
-    caddy_tee_time = TeeTime.find_by(caddy_id)
+    # caddy_tee_time = TeeTime.find_by(caddy_id)
     render 'show.json.jbuilder'
   end
 

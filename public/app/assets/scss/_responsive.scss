@@ -1,0 +1,101 @@
+/*
+17 - Template Responsive Style
+*/
+/*******Responsive style**************/
+@media(max-width:991px){
+    .navbar-dark .navbar-toggler{
+        color: #fff;
+    }
+    .text-intro-large{
+        font-size: 2rem;
+    }
+    .smart-wrap{
+        padding-top: 2rem;
+    }
+    .display-4,.text-medium{
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+    .slider-banner .slider-table .slider-vm h1{
+        font-size: 4rem;
+    }
+    .navbar.navbar-expand-lg.navbar-transparent{
+        position: fixed;
+        top:0;
+        left:0;
+        width: 100%;
+        z-index: 999;
+    }
+    .main-content{
+        .services-list li:nth-child(1),.services-list li:nth-child(3),.services-list li:nth-child(5),.services-list li:nth-child(1),.services-list li:nth-child(2),.services-list li:nth-child(3),.services-list li:nth-child(4){
+            border:0px !important;
+        }
+        .flexslider .slides li h1{
+            font-size: 4rem;
+        }
+    }
+    .hero-gutter-md{
+        margin-top: 50px;
+    }
+    .hero {
+        .text-large{
+            font-size: 2.5rem;
+        }
+        .btn{
+            padding: 8px 15px;
+        }
+        p.lead{
+            font-size: 13px;
+        }
+    }
+    .hero-social-bar{
+        bottom: auto;
+        top: 15px;
+    }
+    .navbar-toggler{
+        border:0px;
+        >i{
+            font-size:2rem;
+        }
+     }
+     .navbar .navbar-collapse{
+         max-height: 280px;
+         overflow-y: scroll;
+     }
+     .bg-parallax.no-gutter{
+         display: none!important;
+     }
+}
+@media(max-width:768px){
+    .btn-lg {
+    padding: 10px 20px;
+}
+.section-title h2{
+    font-size: 1.25rem;
+}
+.h2, h2{
+    font-size: 1.25rem;
+}
+}
+@media(max-width:576px){
+    .footer{
+        padding-bottom: 30px;
+        >*,.text-right{
+            text-align: center!important;
+        }
+    }
+   .contact-wrapper .title-name{
+        padding-top: 1rem;
+        margin-bottom: .5rem;
+    }
+    .bg-parallax{
+        background-position:top center!important;
+    }
+    .feature-icon-alt{
+        margin-bottom: 50px;
+        background-color: $default-color;
+    }
+    .row .col-md-6:nth-child(1) .feature-icon-alt{
+        margin-top: 50px;
+    }
+}

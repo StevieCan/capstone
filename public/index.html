@@ -15,6 +15,12 @@
     <a href="/#/golfers/new">Golfers New Page</a>
     <a href="/#/golfer_signup">Golfers Signup Page</a>
     <a href="/#/golfer_login">Golfers Login Page</a>
+    <a href="/#/golfer_logout">Golfer Logout</a>
+    
+    <div>
+    <a href="/#/caddies">Caddies Index Page</a>
+    </div>
+
     
     <router-view></router-view>
 
@@ -62,6 +68,31 @@
   </div>
 </template>
 
+<template id="caddies-index-page">
+  <div class="vue-component">
+    <div class="container">   
+      <div class="row">
+        <div v-for="caddy in caddies" class="col-md-4">
+          <div class="card mb-5" style="width: 18rem;">
+
+            <div class="card-body">
+             
+              <h4 class="card-title">{{ caddy["name"] }}</h4>
+              <p class="card-text">Email: {{ caddy["email"] }}</p>
+              <p class="card-text">Phone Number: {{ caddy["phone_number"] }}</p>
+              <p class="card-text">Ranking: {{ caddy["ranking"] }}</p>
+              <a v-bind:href="'/#/caddies/' + caddy['id']" class="btn btn-primary">Caddy Info</a>
+            
+            </div>
+          </div>
+          
+        </div>
+
+      </div>
+    </div>
+  </div>
+</template>
+
 <template id="golfers-show-page">
   <div class="vue-component">
     <div class="container">
@@ -72,6 +103,21 @@
      <h2>Caddy Preference 1: {{ golfer["caddy_preference_1"] }}</h2>
      <h2>Caddy Preference 2: {{ golfer["caddy_preference_2"] }}</h2>
      <h2>Caddy Preference 3: {{ golfer["caddy_preference_3"] }}</h2>
+
+    </div>
+
+  </div>
+</template>
+
+<template id="caddies-show-page">
+  <div class="vue-component">
+    <div class="container">
+      
+     <h2>Name: {{ caddy["name"] }}</h2>
+     <h2>Email: {{ caddy["email"] }}</h2>
+     <h2>Phone Number: {{ caddy["phone_number"] }}</h2>
+     <h2>Ranking: {{ caddy["ranking"] }}</h2>
+
 
     </div>
 
@@ -125,7 +171,7 @@
       </div>
       <div class="form-group">
         <label>Member Number:</label>
-        <input type="text" class="form-control" v-model="memberNumber">
+        <input type="text" class="form-control" v-model="member_number">
       </div>
       <div class="form-group">
         <label>Email:</label>
@@ -137,7 +183,7 @@
       </div>
       <div class="form-group">
         <label>Password Confirmation:</label>
-        <input type="text" class="form-control" v-model="passwordConfirmation">
+        <input type="text" class="form-control" v-model="password_confirmation">
       </div>
       <button class="btn btn-primary" v-on:click="submit()">Signup as new golfer</button>
 
@@ -168,3 +214,4 @@
 
   </div>
 </template>
+

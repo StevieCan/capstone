@@ -31,6 +31,8 @@ var GolfersIndexPage = {
   computed: {}
 };
 
+
+
 var GolfersShowPage = {
   template: "#golfers-show-page",
   data: function() {
@@ -58,44 +60,44 @@ var GolfersShowPage = {
   computed: {}
 };
 
-var GolfersNewPage = {
-  template: "#golfers-new-page",
-  data: function() {
-    return {
-      name: "",
-      member_number: "",
-      email: "",
-      password: "",
-      password_confirmation: "",
-      errors: []
-    };
-  },
+// var GolfersNewPage = {
+//   template: "#golfers-new-page",
+//   data: function() {
+//     return {
+//       name: "",
+//       member_number: "",
+//       email: "",
+//       password: "",
+//       password_confirmation: "",
+//       errors: []
+//     };
+//   },
 
-  methods: {
-    submit: function() {
-      var params = {
-        name: this.name,
-        member_number: this.memberNumber,
-        caddy_preference_1: this.caddy_preference_1,
-        caddy_preference_2: this.caddy_preference_2,
-        caddy_preference_3: this.caddy_preference_3,
-        email: this.email,
-        password: this.password,
-        password_confirmation: this.passwordConfirmation
-      };
-      axios
-        .post("/api/golfers", params)
-        .then(function(response) {
-          router.push("/golfers");
-        })
-        .catch(
-          function(error) {
-            this.errors = error.response.data.errors;
-          }.bind(this)
-        );
-    }
-  } 
-};
+//   methods: {
+//     submit: function() {
+//       var params = {
+//         name: this.name,
+//         member_number: this.memberNumber,
+//         caddy_preference_1: this.caddy_preference_1,
+//         caddy_preference_2: this.caddy_preference_2,
+//         caddy_preference_3: this.caddy_preference_3,
+//         email: this.email,
+//         password: this.password,
+//         password_confirmation: this.passwordConfirmation
+//       };
+//       axios
+//         .post("/api/golfers", params)
+//         .then(function(response) {
+//           router.push("/golfers");
+//         })
+//         .catch(
+//           function(error) {
+//             this.errors = error.response.data.errors;
+//           }.bind(this)
+//         );
+//     }
+//   } 
+// };
 
 var GolfersSignupPage = {
   template: "#golfers-signup-page",
@@ -114,18 +116,18 @@ var GolfersSignupPage = {
     submit: function() {
       var params = {
         name: this.name,
-        member_number: this.memberNumber,
+        member_number: this.member_number,
         caddy_preference_1: this.caddy_preference_1,
         caddy_preference_2: this.caddy_preference_2,
         caddy_preference_3: this.caddy_preference_3,
         email: this.email,
         password: this.password,
-        password_confirmation: this.passwordConfirmation
+        password_confirmation: this.password_confirmation
       };
       axios
-        .post("/golfers", params)
+        .post("/api/golfers", params)
         .then(function(response) {
-          router.push("/#/golfer_login");
+          router.push("/golfer_login");
         })
         .catch(
           function(error) {
@@ -154,7 +156,7 @@ var GolfersLoginPage = {
         .post("/golfer_token", params)
         .then(function(response) {
           axios.defaults.headers.common["Authorization"] = "Bearer" + response.data.jwt;
-          localStorage.setGolfer("jwt", response.data.jwt);
+          localStorage.setItem("jwt", response.data.jwt);
           router.push("/");
         })
         .catch(
@@ -168,14 +170,76 @@ var GolfersLoginPage = {
   }
 };
 
+var GolfersLogoutPage = {
+  template: "<h1>Golfer Logout</h1>",
+  created: function() {
+    axios.defaults.headers.common["Authorization"] = undefined;
+    localStorage.removeItem("jwt");
+    router.push("/");
+  }
+};
+
+var CaddiesIndexPage = {
+  template: "#caddies-index-page",
+  data: function() {
+    return {
+      caddies: [] 
+    };
+  },
+  created: function() {
+    axios
+    .get("/api/caddies")
+    .then(function(response) {
+      this.caddies = response.data;
+    }.bind(this));
+  },
+  methods: {},
+  computed: {}
+};
+
+var CaddiesShowPage = {
+  template: "#caddies-show-page",
+  data: function() {
+    return {
+      caddy: {
+        id: "",
+        name: "",
+        email: "",
+        phone_number: "",
+        ranking: ""
+      }
+      
+    };
+  },
+  created: function() {
+    axios
+    .get('/api/caddies/' + this.$route.params.id )
+    .then(function(response) {
+      this.caddies = response.data;
+    }.bind(this));
+  },
+  methods: {},
+  computed: {}
+};
+
+
 var router = new VueRouter({
   routes: [
             { path: "/", component: HomePage },
             { path: "/golfers", component: GolfersIndexPage },
             { path: "/golfers/:id", component: GolfersShowPage },
-            { path: "/golfers/new", component: GolfersNewPage },
-            { path: "/golfer_signup", component: GolfersSignupPage },
-            {path: "/golfer_login", component: GolfersLoginPage}
+            // { path: "/golfers/new", component: GolfersNewPage },
+            { path: "/golfer_login", component: GolfersLoginPage},
+            { path: "/golfer_signup", component: GolfersSignupPage},
+            { path: "/golfer_login", component: GolfersLoginPage},
+            { path: "/golfer_logout", component: GolfersLogoutPage},
+
+            { path: "/caddies", component: CaddiesIndexPage },
+            { path: "/caddies/:id", component: CaddiesShowPage }
+            // { path: "/caddy_login", component: CaddiesLoginPage},
+            // { path: "/caddy_signup", component: CaddiesSignupPage},
+            // { path: "/caddy_login", component: CaddiesLoginPage},
+            // { path: "/caddy_logout", component: CaddiesLogoutPage}
           ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };
@@ -184,5 +248,5 @@ var router = new VueRouter({
 
 var app = new Vue({
   el: "#vue-app",
-  router: router
+  router: router,
 });

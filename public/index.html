@@ -47,6 +47,33 @@
   </div>
 </template>
 
+<template id="home-page">
+  <div class="vue-component">
+
+    <h1>Caddy Buddy</h1>
+    <div>
+      <h2>{{ message }}</h2>
+
+
+    </div>
+
+  </div>
+</template>
+
+
+<template id="home-page">
+  <div class="vue-component">
+
+    <h1>Caddy Buddy</h1>
+    <div>
+      <h2>{{ message }}</h2>
+
+
+    </div>
+
+  </div>
+</template>
+
 <template id="golfers-index-page">
   <div class="vue-component">
     <div class="container">   
@@ -284,14 +311,17 @@
   <div class="vue-component">
     <div class="container">   
       <div class="row">
-        <div v-for="teetime in teetimes" class="col-md-4">
+        <div class="col-md-4">
           <div class="card mb-5" style="width: 18rem;">
 
             <div class="card-body">
              
               <h2 class="card-title">Find a Tee Time</h2>
+              <ul>
+                <li class="text-danger" v-for="error in errors">{{ error }}</li>
+              </ul>
               <div>
-                Start Time: <select name="start_time">
+                Start Time: <select v-model="start_time">
                   <option value="6:10am">6:10 AM</option>
                   <option value="7:10am">7:10 AM</option>
                   <option value="8:10am">8:10 AM</option>
@@ -305,26 +335,26 @@
                
                 </select>
               <div>
-                Caddy Desired: <select name="no_caddy">
+                Caddy Desired: <select v-model="no_caddy">
                   <option value="false">I want a caddy!</option>
                   <option value="true">No caddy</option>
 
                 </select>
               </div>
               <div>
-                Walking or Riding: <select name="cart">
+                Walking or Riding: <select v-model="cart">
                   <option value="true">Riding</option>
                   <option value="false">Walking</option>
                 </select>  
               </div>
               <div>
-                Number of Holes: <select name="number_of_holes">
+                Number of Holes: <select v-model="number_of_holes">
                   <option value=18>18 Holes</option>
                   <option value=9>9 Holes</option>
                 </select> 
               </div>
-              <input type="submit" value="Confirm Reservation">
-              <a v-bind:href="'/#/golfer_tee_times/' + tee_time['id']" class="btn btn-primary">Tee Time Info</a>
+
+              <button class="btn btn-primary" v-on:click="submit()">Create Reservation</button>
             
             </div>
           </div>

@@ -13,6 +13,32 @@ var HomePage = {
   computed: {}
 };
 
+var GolfersHomePage = {
+  template: "#home-page",
+  data: function() {
+    return {
+      message: "Get shit done!"
+
+    };
+  },
+  created: function() {},
+  methods: {},
+  computed: {}
+};
+
+var CaddiesHomePage = {
+  template: "#home-page",
+  data: function() {
+    return {
+      message: "Get shit done!"
+
+    };
+  },
+  created: function() {},
+  methods: {},
+  computed: {}
+};
+
 var GolfersIndexPage = {
   template: "#golfers-index-page",
   data: function() {
@@ -157,7 +183,7 @@ var GolfersLoginPage = {
         .then(function(response) {
           axios.defaults.headers.common["Authorization"] = "Bearer" + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
-          router.push("/");
+          router.push("/golfers_home");
         })
         .catch(
           function(error) {
@@ -280,7 +306,7 @@ var CaddiesLoginPage = {
         .then(function(response) {
           axios.defaults.headers.common["Authorization"] = "Bearer" + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
-          router.push("/");
+          router.push("/caddies_login");
         })
         .catch(
           function(error) {
@@ -306,25 +332,43 @@ var GolferTeeTimesNewPage = {
   template: "#golfer-tee-times-new-page",
   data: function() {
     return {
-      tee_times: [] 
+      start_time: "",
+      no_caddy: "",
+      cart: "",
+      number_of_holes: "",
+      errors: []
     };
   },
-  created: function() {
-    axios
-    .get("/api/tee_times")
-    .then(function(response) {
-      this.tee_times = response.data;
-    }.bind(this));
-  },
-  methods: {},
-  computed: {}
-};
 
+  methods: {
+    submit: function() {
+      var params = {
+        start_time: this.start_time,
+        no_caddy: this.no_caddy,
+        cart: this.cart,
+        number_of_holes: this.number_of_holes
+      };
+      axios
+        .post("/api/tee_times", params)
+        .then(function(response) {
+          router.push("/golfer_tee_times");
+        })
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+          }.bind(this)
+
+        );
+    }
+  }
+};
 
 
 var router = new VueRouter({
   routes: [
             { path: "/", component: HomePage },
+            { path: "/golfers_home", component: GolfersHomePage },
+            { path: "/caddies_home", component: CaddiesHomePage },
             { path: "/golfers", component: GolfersIndexPage },
             { path: "/golfers/:id", component: GolfersShowPage },
             { path: "/golfer_signup", component: GolfersSignupPage},

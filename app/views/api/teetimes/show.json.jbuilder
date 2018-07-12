@@ -1,1 +1,0 @@
-json.partial! @tee_time, partial: "tee_time", as: :tee_time

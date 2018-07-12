@@ -15,9 +15,13 @@ Rails.application.routes.draw do
     post '/golfers' => 'golfers#create'
     delete '/golfers/:id' => 'golfers#destroy'
 
-    get '/tee_times' => 'tee_times#index'
-    get '/tee_times' => 'tee_times#show'
+    get '/tee_times' => 'teetimes#golfer_tee_time_index'
+    get '/tee_times/:id' => 'teetimes#golfer_tee_time_show'
+    post '/tee_times' => 'teetimes#golfer_tee_time_create' 
 
+    get '/caddy_tee_times' => 'teetimes#caddy_tee_time_index'
+    get '/caddy_tee_times/:id' => 'teetimes#caddy_tee_time_show'
+    post '/caddy_tee_times' => 'teetimes#caddy_tee_time_confirm' 
   end
 
 

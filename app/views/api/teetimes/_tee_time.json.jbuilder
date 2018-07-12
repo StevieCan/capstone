@@ -1,5 +1,4 @@
 json.id tee_time.id
-json.user_id tee_time.user_id
 json.caddy_id tee_time.caddy_id
 json.golfer_id tee_time.golfer_id
 json.location_id tee_time.location_id

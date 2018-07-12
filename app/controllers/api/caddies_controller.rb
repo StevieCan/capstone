@@ -18,7 +18,8 @@ class Api::CaddiesController < ApplicationController
                       email: params[:email],
                       phone_number: params[:phone_number],
                       username: params[:username],
-                      password_digest: params[:password_digest],
+                      password: params[:password],
+                      password_confirmation: params[:password_confirmation],
                       ranking: params[:ranking],
                       admin: params[:admin]
       )    

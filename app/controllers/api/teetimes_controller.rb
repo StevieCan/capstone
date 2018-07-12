@@ -1,12 +1,11 @@
 class Api::TeetimesController < ApplicationController
-  def index
+  def golfer_index
     @tee_times = TeeTime.all
-    if tee_times.golfer["confirmed"] == false
-      render 'index.json.jbuilder'
+    render 'index.json.jbuilder'
     end
   end
 
-  def create
+  def golfer_tee_time_create
     @tee_time = TeeTime.new(
                             caddy_id: params[:caddy_id],
                             golfer_id: params[:golfer_id],
@@ -21,9 +20,9 @@ class Api::TeetimesController < ApplicationController
     render 'show.json.jbuilder'
   end
 
-  def show
+  def golfer_tee_time_show
     tee_time_id = params[:id]
-    @tee_time = TeeTime.find(tee_time_id)
+    @tee_time = TeeTime.find(golfer_id)
     render 'show.json.jbuilder'
   end
 

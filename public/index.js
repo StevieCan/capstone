@@ -179,6 +179,7 @@ var GolfersLogoutPage = {
   }
 };
 
+
 var CaddiesIndexPage = {
   template: "#caddies-index-page",
   data: function() {
@@ -222,24 +223,122 @@ var CaddiesShowPage = {
   computed: {}
 };
 
+var CaddiesSignupPage = {
+  template: "#caddies-signup-page",
+  data: function() {
+    return {
+      name: "",
+      phone_number: "",
+      ranking: "",
+      email: "",
+      password: "",
+      password_confirmation: "",
+      errors: []
+    };
+  },
+
+  methods: {
+    submit: function() {
+      var params = {
+        name: this.name,
+        phone_number: this.phone_number,
+        ranking: this.ranking,
+        email: this.email,
+        password: this.password,
+        password_confirmation: this.password_confirmation
+      };
+      axios
+        .post("/api/caddies", params)
+        .then(function(response) {
+          router.push("/caddy_login");
+        })
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+          }.bind(this)
+        );
+    }
+  } 
+};
+
+var CaddiesLoginPage = {
+  template: "#caddies-login-page",
+  data: function() {
+    return {
+      email: "",
+      password: "",
+      errors: [] 
+    };
+  },
+  methods: {
+    submit: function() {
+      var params = {
+        auth: { email: this.email, password: this.password }
+      };
+      axios
+        .post("/caddy_token", params)
+        .then(function(response) {
+          axios.defaults.headers.common["Authorization"] = "Bearer" + response.data.jwt;
+          localStorage.setItem("jwt", response.data.jwt);
+          router.push("/");
+        })
+        .catch(
+          function(error) {
+            this.errors = ["Invalid email or password."];
+            this.email = "";
+            this.password = "";
+          }.bind(this)
+        );
+    }
+  }
+};
+
+var CaddiesLogoutPage = {
+  template: "<h1>Caddy Logout</h1>",
+  created: function() {
+    axios.defaults.headers.common["Authorization"] = undefined;
+    localStorage.removeItem("jwt");
+    router.push("/");
+  }
+};
+
+var GolferTeeTimesNewPage = {
+  template: "#golfer-tee-times-new-page",
+  data: function() {
+    return {
+      tee_times: [] 
+    };
+  },
+  created: function() {
+    axios
+    .get("/api/tee_times")
+    .then(function(response) {
+      this.tee_times = response.data;
+    }.bind(this));
+  },
+  methods: {},
+  computed: {}
+};
+
+
 
 var router = new VueRouter({
   routes: [
             { path: "/", component: HomePage },
             { path: "/golfers", component: GolfersIndexPage },
             { path: "/golfers/:id", component: GolfersShowPage },
-            // { path: "/golfers/new", component: GolfersNewPage },
-            { path: "/golfer_login", component: GolfersLoginPage},
             { path: "/golfer_signup", component: GolfersSignupPage},
             { path: "/golfer_login", component: GolfersLoginPage},
             { path: "/golfer_logout", component: GolfersLogoutPage},
 
             { path: "/caddies", component: CaddiesIndexPage },
-            { path: "/caddies/:id", component: CaddiesShowPage }
-            // { path: "/caddy_login", component: CaddiesLoginPage},
-            // { path: "/caddy_signup", component: CaddiesSignupPage},
-            // { path: "/caddy_login", component: CaddiesLoginPage},
-            // { path: "/caddy_logout", component: CaddiesLogoutPage}
+            { path: "/caddies/:id", component: CaddiesShowPage },
+            { path: "/caddy_signup", component: CaddiesSignupPage},
+            { path: "/caddy_login", component: CaddiesLoginPage},
+            { path: "/caddy_logout", component: CaddiesLogoutPage},
+
+            { path: "/golfer_tee_times", component: GolferTeeTimesNewPage}
+
           ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };
@@ -249,4 +348,10 @@ var router = new VueRouter({
 var app = new Vue({
   el: "#vue-app",
   router: router,
+  // created: function() {
+  //   var jwt = localStorage.getItem("jwt");
+  //   if (jwt) {
+  //     axios.defaults.headers.common["Authorization"] = jwt;
+  //   }
+  // }
 });

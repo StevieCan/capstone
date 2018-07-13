@@ -25,31 +25,32 @@ class Api::TeetimesController < ApplicationController
   end
 
   def caddy_tee_time_index
-    if TeeTime.no_caddy == false
-      @tee_times = TeeTime.all
-    end
-    render 'index.json.jbuilder'
+     # @tee_times = TeeTime.where(no_caddy: false, caddy_id: nil, confirmed: false)
+     @unconfirmed_tee_times = TeeTime.where(no_caddy: false, caddy_id: nil, confirmed: false)
+     @confirmed_tee_times = TeeTime.where(caddy_id: 2)
+     # @confirmed_tee_times = current_caddy.tee_times
+    render 'caddy_index.json.jbuilder'
   end
 
 
-  def caddy_tee_time_confirm
-    if TeeTime.golfer_id
-      tee_time = (
+  # def caddy_tee_time_confirm
+  #   if TeeTime.golfer_id
+  #     @tee_time = (
 
-                            start_time: params[:start_time]
-                            confirmed: params[:confirmed]
+  #                           start_time: params[:start_time],
+  #                           confirmed: params[:confirmed]
 
-      )
-    end
-    @tee_time.save
-    render 'show.json.jbuilder'
-  end
+  #     )
+  #   end
+  #   @tee_time.save
+  #   render 'show.json.jbuilder'
+  # end
 
-  def caddy_tee_time_show
-    tee_time_id = params[:id]
-    @tee_time = TeeTime.find(tee_time_id)
-    render 'show.json.jbuilder'
-  end
+  # def caddy_tee_time_show
+  #   tee_time_id = params[:id]
+  #   @tee_time = TeeTime.find(tee_time_id)
+  #   render 'show.json.jbuilder'
+  # end
 
 
 

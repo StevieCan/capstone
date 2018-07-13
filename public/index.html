@@ -25,6 +25,7 @@
 
     <div>
     <a href="/#/golfer_tee_times">Golfer Tee Times New Page</a>
+    <a href="/#/caddy_tee_times">Caddy Tee Times Index Page</a>
     </div>
     
     <router-view></router-view>
@@ -39,36 +40,63 @@
 
     <h1>Caddy Buddy</h1>
     <div>
-      <h2>{{ message }}</h2>
+      <br>
+      <a href="/#/golfers">Golfers Index Page</a>
+      <br><a href="/#/golfer_signup">Golfers Signup Page</a>
+      <br><a href="/#/golfer_login">Golfers Login Page</a>
+      <br><a href="/#/golfer_logout">Golfer Logout</a>
+      
+      <div>
+      <br><a href="/#/caddies">Caddies Index Page</a>
+      <br><a href="/#/caddy_signup">Caddies Signup Page</a>
+      <br><a href="/#/caddy_login">Caddies Login Page</a>
+      <br><a href="/#/caddy_logout">Caddy Logout</a>
+      </div>
 
-
+      <div>
+      <br><a href="/#/golfer_tee_times">Golfer Tee Times New Page</a>
+      <br><a href="/#/caddy_tee_times">Caddy Tee Times Confirmation Page</a>
+      </div>
     </div>
 
   </div>
 </template>
 
-<template id="home-page">
+<template id="golfers-home-page">
   <div class="vue-component">
 
-    <h1>Caddy Buddy</h1>
+    <h1>{{ message }}</h1>
     <div>
-      <h2>{{ message }}</h2>
-
-
+    
+    <div> 
+    <!-- <h2>{{ golfer["name"] }}</h2> -->
+    </div>
+    <div>
+      <a href="/api/caddies">See Caddy List</a> 
+    </div>
+    <div>
+      <a href="/#/golfers/#{golfer_id}" class="btn btn-primary">My Info</a>
+    </div>
+    <div>
+      <a href="/#/golfer_tee_times">Make a reservation</a> 
     </div>
 
   </div>
 </template>
 
 
-<template id="home-page">
+<template id="caddies-home-page">
   <div class="vue-component">
 
-    <h1>Caddy Buddy</h1>
+    <h1>{{ message }}</h1>
     <div>
-      <h2>{{ message }}</h2>
-
-
+    <h2>{{ caddy.name }}</h2>
+    </div>
+    <div>
+      <a href="/api/golfers">See Golfer List</a> 
+    </div>
+    <div>
+      <a href="/#/caddy_tee_times">Select Available Tee Times</a> 
     </div>
 
   </div>
@@ -359,6 +387,53 @@
             </div>
           </div>
           
+        </div>
+
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="caddy-tee-times-index-page">
+  <div class="vue-component">
+    <div class="container"> 
+
+      <h1>Available Tee Times</h1>
+
+      <div class="row">
+        <div class="caddy-tee-times" v-for="tee_time in unconfirmed_tee_times" >
+          <div >
+            <div class="card mb-5" style="width: 18rem;">
+              <div class="card-body"> 
+                <h2 class="card-title">Find available Tee Times</h2>
+                <p class="card-text">{{ tee_time["start_time"] }} </p>
+                <p class="card-text">{{ tee_time["number_of_holes"] }} </p>
+                <p class="card-text">{{ tee_time["cart"] }}</p>                   
+                <button class="btn btn-primary" v-on:click="submit()">Confirm Reservation</button>
+            
+            </div>
+          </div>
+        </div>
+        </div>
+
+      </div>
+
+      <h1>My Tee Times</h1>
+
+      <div class="row">
+        <div class="caddy-tee-times" v-for="tee_time in confirmed_tee_times" >
+          <div >
+            <div class="card mb-5" style="width: 18rem;">
+              <div class="card-body"> 
+                <h2 class="card-title">Find available Tee Times</h2>
+                <p class="card-text">{{ tee_time["start_time"] }} </p>
+                <p class="card-text">{{ tee_time["number_of_holes"] }} </p>
+                <p class="card-text">{{ tee_time["cart"] }}</p>                   
+                <button class="btn btn-primary" v-on:click="submit()">Confirm Reservation</button>
+            
+            </div>
+          </div>
+        </div>
         </div>
 
       </div>

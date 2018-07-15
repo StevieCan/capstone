@@ -1,5 +1,7 @@
 {
   "name": "capstone",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "twilio": "^3.17.6"
+  }
 }

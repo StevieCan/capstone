@@ -200,7 +200,7 @@ var GolfersLoginPage = {
       axios
         .post("/golfer_token", params)
         .then(function(response) {
-          axios.defaults.headers.common["Authorization"] = "Bearer" + response.data.jwt;
+          axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
           router.push("/golfers_home");
         })
@@ -261,7 +261,7 @@ var CaddiesShowPage = {
     axios
     .get('/api/caddies/' + this.$route.params.id )
     .then(function(response) {
-      this.caddies = response.data;
+      this.caddy = response.data;
     }.bind(this));
   },
   methods: {},
@@ -323,7 +323,7 @@ var CaddiesLoginPage = {
       axios
         .post("/caddy_token", params)
         .then(function(response) {
-          axios.defaults.headers.common["Authorization"] = "Bearer" + response.data.jwt;
+          axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
           router.push("/caddies_home");
         })
@@ -390,6 +390,7 @@ var CaddiesTeeTimesIndexPage = {
   data: function() {
     return {
       confirmed_tee_times: [{
+        caddy_id: current_caddy.id,
         start_time: "",
         number_of_holes: 0,
         cart: ""
@@ -415,7 +416,7 @@ var CaddiesTeeTimesIndexPage = {
 
     submit: function(inputTeeTime) {
       var params = {
-        caddy_id: 2
+        caddy_id: current_caddy.id
       };
       axios
         .get("/confirm_tee_times/" + inputTeeTime.id, params)
@@ -465,10 +466,10 @@ var router = new VueRouter({
 var app = new Vue({
   el: "#vue-app",
   router: router,
-  // created: function() {
-  //   var jwt = localStorage.getItem("jwt");
-  //   if (jwt) {
-  //     axios.defaults.headers.common["Authorization"] = jwt;
-  //   }
-  // }
+  created: function() {
+    var jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      axios.defaults.headers.common["Authorization"] = jwt;
+    }
+  }
 });

@@ -1,5 +1,6 @@
 class Api::CaddiesController < ApplicationController
-
+  before_action :authenticate_caddy
+  
   def index
     @caddies = Caddy.all
     render 'index.json.jbuilder'

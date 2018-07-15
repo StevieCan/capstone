@@ -1,6 +1,8 @@
 class Api::GolfersController < ApplicationController
-
+  before_action :authenticate_golfer
+  
   def index
+    p current_golfer
     @golfers = Golfer.all
     render 'index.json.jbuilder'
   end

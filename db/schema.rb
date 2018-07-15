@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180701134919) do
+ActiveRecord::Schema.define(version: 20180715012128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20180701134919) do
     t.string "name"
     t.string "email"
     t.string "phone_number"
-    t.string "username"
     t.string "password_digest"
     t.boolean "ranking"
     t.boolean "admin"
@@ -43,6 +42,14 @@ ActiveRecord::Schema.define(version: 20180701134919) do
     t.string "name"
     t.string "address"
     t.string "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tee_time_reminders", force: :cascade do |t|
+    t.string "name"
+    t.string "phone_number"
+    t.datetime "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

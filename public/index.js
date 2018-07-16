@@ -4,7 +4,7 @@ var HomePage = {
   template: "#home-page",
   data: function() {
     return {
-      message: "Get shit done!"
+      message: "Get stuff done!"
 
     };
   },
@@ -419,7 +419,7 @@ var CaddiesTeeTimesIndexPage = {
         caddy_id: current_caddy.id
       };
       axios
-        .get("/confirm_tee_times/" + inputTeeTime.id, params)
+        .post("/confirm_tee_times/" + inputTeeTime.id, params)
         .then(function(response) {
           this.unconfirmed_tee_times = response.data.unconfirmed_tee_times;
           this.confirmed_tee_times = response.data.confirmed_tee_times;

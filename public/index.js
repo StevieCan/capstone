@@ -34,7 +34,7 @@ var GolfersHomePage = {
 };
 
 var CaddiesHomePage = {
-  template: "#home-page",
+  template: "#caddies-home-page",
   data: function() {
     return {
       message: "Welcome to Caddy Buddy!",
@@ -372,7 +372,7 @@ var GolferTeeTimesNewPage = {
       axios
         .post("/api/tee_times", params)
         .then(function(response) {
-          router.push("/golfer_tee_times");
+          router.push("/golfers_home");
         })
         .catch(
           function(error) {
@@ -390,7 +390,7 @@ var CaddiesTeeTimesIndexPage = {
   data: function() {
     return {
       confirmed_tee_times: [{
-        caddy_id: current_caddy.id,
+        caddy_id: 2,
         start_time: "",
         number_of_holes: 0,
         cart: ""
@@ -406,29 +406,26 @@ var CaddiesTeeTimesIndexPage = {
     axios
     .get("/api/caddy_tee_times")
     .then(function(response) {
-      console.log(response);
       this.unconfirmed_tee_times = response.data.unconfirmed_tee_times;
       this.confirmed_tee_times = response.data.confirmed_tee_times;
     }.bind(this));
   },
 
   methods: {
-
     submit: function(inputTeeTime) {
       var params = {
-        caddy_id: current_caddy.id
+        caddy_id: 2
       };
+
       axios
-        .post("/confirm_tee_times/" + inputTeeTime.id, params)
-        .then(function(response) {
-          this.unconfirmed_tee_times = response.data.unconfirmed_tee_times;
-          this.confirmed_tee_times = response.data.confirmed_tee_times;
-        })
-        .catch(
-          function(error) {
-            this.errors = error.response.data.errors;
-          }.bind(this)
-        );     
+      .patch("/api/caddy_tee_times/" + inputTeeTime.id, params)
+      .then(function(response) {
+        this.unconfirmed_tee_times = response.data.unconfirmed_tee_times;
+        this.confirmed_tee_times = response.data.confirmed_tee_times;
+      }.bind(this))
+      .catch(function(error) {
+          this.errors = error.response.data.errors;
+      }.bind(this));     
     }
   }
 };

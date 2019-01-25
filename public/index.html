@@ -32,6 +32,7 @@
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
     <script src="index.js" defer></script>
+    <link rel="stylesheet" href="main.css">
   </head>
   <body>
 
@@ -54,7 +55,7 @@
       </div> -->
     <!-- navbar-->
     <header class="header">
-      <nav class="navbar navbar-expand-lg fixed-top"><a href="index.html" class="navbar-brand">Caddy Buddy</a>
+      <nav class="navbar navbar-expand-lg fixed-top"><a href="/#/" class="navbar-brand">Caddy Buddy</a>
         <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span></span><span></span><span></span></button>
         <div id="navbarSupportedContent" class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto align-items-start align-items-lg-center">
@@ -90,10 +91,10 @@
               <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
             </div>
             <div class="modal-body">
-              <form id="signupform" action="#">
+              <form>
                 <div class="form-group">
                   <label for="fullname">Full Name</label>
-                  <input type="text" name="fullname" placeholder="Full Name" id="fullname">
+                  <input type="text" name="fullname" placeholder="Full Name">
                 </div>
                 <div class="form-group">
                   <label for="member_number">Member Number</label>
@@ -101,15 +102,15 @@
                 </div>
                 <div class="form-group">
                   <label for="email">Email Address</label>
-                  <input type="text" name="email" placeholder="Email Address" id="email">
+                  <input type="text" name="email" placeholder="Email Address">
                 </div>
                 <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="text" name="password" placeholder="Password" id="email">
+                  <input type="password" name="password" placeholder="Password">
                 </div>
                 <div class="form-group">
                   <label for="password_confirmation">Password Confirmation</label>
-                  <input type="text" name="password_confirmation" placeholder="Password Confirmation" id="email">
+                  <input type="password" name="password_confirmation" placeholder="Password Confirmation">
                 </div>
                 <div class="form-group">
                   <button type="submit" class="submit btn btn-primary btn-shadow btn-gradient">Golfer Signup</button>
@@ -132,7 +133,7 @@
               <form id="signupform" action="#">
                 <div class="form-group">
                   <label for="fullname">Full Name</label>
-                  <input type="text" name="fullname" placeholder="Full Name" id="fullname">
+                  <input type="text" name="fullname" placeholder="Full Name">
                 </div>
                 <div class="form-group">
                   <label for="phone_number">Phone Number</label>
@@ -144,15 +145,15 @@
                 </div>
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="text" name="email" placeholder="Email Address" id="email">
+                  <input type="text" name="email" placeholder="Email Address">
                 </div>
                 <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="text" name="password" placeholder="Password" id="password">
+                  <input type="password" name="password" placeholder="Password" id="password">
                 </div>
                 <div class="form-group">
                   <label for="password_confirmation">Password Confirmation</label>
-                  <input type="text" name="password_confirmation" placeholder="Password Confirmation" id="password_confirmation">
+                  <input type="password" name="password_confirmation" placeholder="Password Confirmation" id="password_confirmation">
                 </div>
 
                 <div class="form-group">
@@ -169,7 +170,7 @@
         <div class="container">
           <div class="row d-flex">
             <div class="col-lg-6 text order-2 order-lg-1">
-              <h1>User Interface between Golfers and Caddies</h1>
+              <h1>User Interface Between Golfers and Caddies</h1>
               <p class="hero-text">Making life easier for the lowly caddy by connecting golfers with caddies so they can collectively make a tee time.</p>
               <div class="CTA"><a href="#/golfer_login" class="btn btn-primary btn-shadow btn-gradient link-scroll">Golfer Login</a><a href="#/caddy_login" class="btn btn-primary btn-shadow btn-gradient link-scroll">Caddy Login</a></div>
             </div>
@@ -178,11 +179,35 @@
         </div>
       </section>
 
+      <section id="browser" class="browser">
+        <div class="container">
+          <div class="row d-flex justify-content-center"> 
+            <div class="col-lg-8 text-center">
+              <h2 class="h3 mb-5">How Caddy Buddy Works</h2>
+              <div class="browser-mockup">
+                <div id="nav-tabContent" class="tab-content">
+                  <div id="nav-first" role="tabpanel" aria-labelledby="nav-first-tab" class="tab-pane fade show active"><img src="https://usatftw.files.wordpress.com/2016/10/gty_612074690_85710801.jpg?w=1000&h=600&crop=1" alt="..." class="img-fluid"></div>
+                  <div id="nav-second" role="tabpanel" aria-labelledby="nav-second-tab" class="tab-pane fade"><img src="img/preview-2.png" alt="..." class="img-fluid"></div>
+                  <div id="nav-third" role="tabpanel" aria-labelledby="nav-third-tab" class="tab-pane fade"><img src="img/preview-1.png" alt="..." class="img-fluid"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="myTab" role="tablist" class="nav nav-tabs">
+            <div class="row">
+              <div class="col-md-4"><a id="nav-first-tab" data-toggle="tab" href="#nav-first" role="tab" aria-controls="nav-first" aria-expanded="true" class="nav-item nav-link active"> <span class="number">1</span>Golfer logs in and requests a tee time along with a caddy for a specific date.</a></div>
+              <div class="col-md-4"><a id="nav-second-tab" data-toggle="tab" href="#nav-second" role="tab" aria-controls="nav-second" class="nav-item nav-link"> <span class="number">2</span>Caddy has option to confirm the reservation. Once confirmed, that specific tee time will no longer be available. </a></div>
+              <div class="col-md-4"><a id="nav-third-tab" data-toggle="tab" href="#nav-third" role="tab" aria-controls="nav-third" class="nav-item nav-link"> <span class="number">3</span>Reminders will be sent to both the caddies and golfers about their confirmed tee times through SMS.</a></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
     <footer class="main-footer">
       <div class="container">
         <div class="row">
-          <div class="col-lg-3 col-md-6"><a href="#" class="brand">Landy</a>
+          <div class="col-lg-3 col-md-6"><a href="#" class="brand">Caddy Buddy</a>
             <ul class="contact-info list-unstyled">
               <li><a href="mailto:hshan77@aol.com">Sales@CaddyBuddy.com</a></li>
               <li><a href="tel:123456789">+1 123-456-7890</a></li>
@@ -197,30 +222,22 @@
           <div class="col-lg-3 col-md-6">
             <h5>Selected Cases</h5>
             <ul class="links list-unstyled">
-              <li> <a href="#">Guess Conntect</a></li>
-              <li> <a href="#">Postly</a></li>
-              <li> <a href="#">Iris Vor Arnim</a></li>
-              <li> <a href="#">Yapital</a></li>
+              <li> <a href="#">Directions</a></li>
+              <li> <a href="#">Contact Us</a></li>
+              <li> <a href="#">About Us</a></li>
+              <li> <a href="#">Privacy Policy</a></li>
             </ul>
           </div>
           <div class="col-lg-3 col-md-6">
-            <h5>Selected Cases</h5>
+            <h5>Additional Links</h5>
             <ul class="links list-unstyled">
-              <li> <a href="#">Guess Conntect</a></li>
-              <li> <a href="#">Postly</a></li>
-              <li> <a href="#">Iris Vor Arnim</a></li>
-              <li> <a href="#">Yapital</a></li>
+              <li> <a href="http://twinorchardcc.org/">Twin Orchards Country Club</a></li>
+              <li> <a href="#">Media</a></li>
+              <li> <a href="#">Terms of Service</a></li>
+              <li> <a href="#">Site Map</a></li>
             </ul>
           </div>
-          <div class="col-lg-3 col-md-6">
-            <h5>Selected Cases</h5>
-            <ul class="links list-unstyled">
-              <li> <a href="#">Guess Conntect</a></li>
-              <li> <a href="#">Postly</a></li>
-              <li> <a href="#">Iris Vor Arnim</a></li>
-              <li> <a href="#">Yapital</a></li>
-            </ul>
-          </div>
+
         </div>
       </div>
       <div class="copyrights">
@@ -285,14 +302,21 @@
       <h2>{{ golfer["name"] }}</h2>
     </div> -->
 
+<!--     <div class="col-lg-3 col-md-6">
+    <h5>{{ golfer["name"] }}</h5> -->
+
     <div>
       <a href="/#/golfers/ + golfer['id']" class="btn btn-primary">My Info</a>
     </div>
+    <br>
     <div>
-      <a href="/api/caddies">See Caddy List</a> 
-    </div>
+      <a href="/api/caddies" class="btn btn-primary">See Caddy List</a> 
+    </div><br>
     <div>
-      <a href="/#/golfer_tee_times">Make a reservation</a> 
+      <a href="/#/golfer_tee_times" class="btn btn-primary">Make a reservation</a> 
+    </div><br>
+
+    <div class="CTA"><a href="#/golfer_logout" class="btn btn-primary btn-shadow btn-gradient link-scroll">Golfer Logout</a>
     </div>
 
   </div>
@@ -302,15 +326,21 @@
 <template id="caddies-home-page">
   <div class="vue-component">
 
-    <h1>{{ message }}</h1>
+<!--     <h1>{{ message }}</h1>
     <div>
     <h2>{{ caddy.name }}</h2>
-    </div>
+    </div> -->
     <div>
-      <a href="/api/golfers">See Golfer List</a> 
-    </div>
+      <a href="/#/caddies/ + caddy['id']" class="btn btn-primary">My Info</a>
+    </div><br>
     <div>
-      <a href="/#/caddy_tee_times">Select Available Tee Times</a> 
+      <a href="/api/golfers" class="btn btn-primary">See Golfer List</a> 
+    </div><br>
+    <div>
+      <a href="/#/caddy_tee_times" class="btn btn-primary">Select Available Tee Times</a> 
+    </div><br>
+
+    <div class="CTA"><a href="#/caddy_logout" class="btn btn-primary btn-shadow btn-gradient link-scroll">Caddy Logout</a>
     </div>
 
   </div>
@@ -455,11 +485,11 @@
       </div>
       <div class="form-group">
         <label>Password:</label>
-        <input type="text" class="form-control" v-model="password">
+        <input type="password" class="form-control" v-model="password">
       </div>
       <div class="form-group">
         <label>Password Confirmation:</label>
-        <input type="text" class="form-control" v-model="password_confirmation">
+        <input type="password" class="form-control" v-model="password_confirmation">
       </div>
       <button class="btn btn-primary" v-on:click="submit()">Signup as new golfer</button>
 
@@ -493,11 +523,11 @@
       </div>
       <div class="form-group">
         <label>Password:</label>
-        <input type="text" class="form-control" v-model="password">
+        <input type="password" class="form-control" v-model="password">
       </div>
       <div class="form-group">
         <label>Password Confirmation:</label>
-        <input type="text" class="form-control" v-model="password_confirmation">
+        <input type="password" class="form-control" v-model="password_confirmation">
       </div>
       <button class="btn btn-primary" v-on:click="submit()">Signup as new caddy</button>
 
@@ -520,7 +550,7 @@
       </div>
       <div class="form-group">
         <label>Password:</label>
-        <input type="text" class="form-control" v-model="password">
+        <input type="password" class="form-control" v-model="password">
       </div>
       <button class="btn btn-primary" v-on:click="submit()">Login</button>
 
@@ -542,7 +572,7 @@
       </div>
       <div class="form-group">
         <label>Password:</label>
-        <input type="text" class="form-control" v-model="password">
+        <input type="password" class="form-control" v-model="password">
       </div>
       <button class="btn btn-primary" v-on:click="submit()">Login</button>
 
@@ -575,7 +605,7 @@
                   <option value="12:10pm">12:10 PM</option>
                   <option value="1:10pm">1:10 PM</option>
                   <option value="2:10pm">2:10PM</option>
-                  <option value="3:10pm">3:10AM</option>
+                  <option value="3:10pm">3:10PM</option>
                
                 </select>
               <div>
@@ -612,46 +642,51 @@
 
 <template id="caddy-tee-times-index-page">
   <div class="vue-component">
-    <div class="container"> 
-
-      <h1>Available Tee Times</h1>
-
+    <div class="container">
+      <br> 
       <div class="row">
-        <div class="caddy-tee-times" v-for="tee_time in unconfirmed_tee_times" >
-          <div >
-            <div class="card mb-5" style="width: 18rem;">
-              <div class="card-body"> 
-                <h2 class="card-title">Find available Tee Times</h2>
-                <p class="card-text">{{ tee_time["start_time"] }} </p>
-                <p class="card-text">{{ tee_time["number_of_holes"] }} </p>
-                <p class="card-text">{{ tee_time["cart"] }}</p>                   
-                <button class="btn btn-primary" v-on:click="submit()">Confirm Reservation</button>
-            
-            </div>
-          </div>
-        </div>
-        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+                <h1>Available Tee Times</h1><br>
 
-      </div>
+                <div class="row">
+                  <div class="caddy-tee-times" v-for="tee_time in unconfirmed_tee_times" >
+                    <div >
+                      <div class="card mb-5" style="width: 18rem;">
+                        <div class="card-body"> 
+<!--                           <h5 class="card-title">Tee Time Info</h5> -->
+                          <p class="card-text">Start Time: {{ tee_time["start_time"] }} </p>
+                          <p class="card-text">Number of Holes: {{ tee_time["number_of_holes"] }} </p>
+                          <p class="card-text">Cart: {{ tee_time["cart"] }}</p>                   
+                          <button class="btn btn-primary" v-on:click="submit(tee_time)">Confirm Reservation</button>
+                      
+                      </div>
+                    </div>
+                  </div>
+                  </div>
 
-      <h1>My Tee Times</h1>
+                </div>
 
-      <div class="row">
-        <div class="caddy-tee-times" v-for="tee_time in confirmed_tee_times" >
-          <div >
-            <div class="card mb-5" style="width: 18rem;">
-              <div class="card-body"> 
-                <h2 class="card-title">Find available Tee Times</h2>
-                <p class="card-text">{{ tee_time["start_time"] }} </p>
-                <p class="card-text">{{ tee_time["number_of_holes"] }} </p>
-                <p class="card-text">{{ tee_time["cart"] }}</p>                   
-<!--                 <button class="btn btn-primary" v-on:click="submit()">Confirm Reservation</button> -->
-            
-            </div>
-          </div>
+                <h1>My Tee Times</h1>
+
+                <div class="row">
+                  <div class="caddy-tee-times" v-for="tee_time in confirmed_tee_times" >
+                    <div >
+                      <div class="card mb-5" style="width: 18rem;">
+                        <div class="card-body"> 
+                          <h5 class="card-title">Work Hard Play Hard</h5>
+                          <p class="card-text">{{ tee_time["start_time"] }} </p>
+                          <p class="card-text">{{ tee_time["number_of_holes"] }} </p>
+                          <p class="card-text">{{ tee_time["cart"] }}</p>                   
+          <!--                 <button class="btn btn-primary" v-on:click="submit()">Confirm Reservation</button> -->
+                      
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+
+                </div>          
         </div>
-        </div>
-
       </div>
     </div>
   </div>
